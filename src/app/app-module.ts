@@ -8,9 +8,9 @@ import { TodoListModule } from './components/todo-list/todo-list-module';
 @NgModule({
   declarations: [
     App,
-    TodoListModule
   ],
   imports: [
+    TodoListModule,
     BrowserModule,
     AppRoutingModule
   ],
