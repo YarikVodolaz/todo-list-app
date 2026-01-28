@@ -8,10 +8,9 @@
       "node"
     ]
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "src/**/*.spec.ts"
-  ]
-}
+
+"include": [
+  "src/**/*.ts", 
+  "src/app/components/todo-list/todo-list.component.ts",
+  "src/**/*.spec.ts"
+]

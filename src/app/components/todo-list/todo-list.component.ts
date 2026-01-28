@@ -8,8 +8,8 @@ import { TodoListRequests } from '../../services/todo-list-requests';
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.scss',
 })
-export class TodoList implements OnInit{
-   constructor (
+export class TodoList implements OnInit {
+  constructor(
     private store: TodoListStore,
     private requests: TodoListRequests,
   ) {}
@@ -18,4 +18,3 @@ export class TodoList implements OnInit{
     console.log('Сервисы внедрены:', this.store, this.requests);
   }
 }
-

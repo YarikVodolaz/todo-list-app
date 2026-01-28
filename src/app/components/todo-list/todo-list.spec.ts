@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoList } from './todo-list';
+import { TodoList } from './todo-list.component';
 
 describe('TodoList', () => {
   let component: TodoList;
@@ -8,9 +8,8 @@ describe('TodoList', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TodoList]
-    })
-    .compileComponents();
+      declarations: [TodoList],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TodoList);
     component = fixture.componentInstance;
