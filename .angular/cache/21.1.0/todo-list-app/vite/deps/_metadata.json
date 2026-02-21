@@ -1,0 +1,91 @@
+{
+  "hash": "40b5eb83",
+  "configHash": "806cc87c",
+  "lockfileHash": "d0abe425",
+  "browserHash": "e10fadfc",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "c08898aa",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "579bfb71",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "604ef087",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "d6fa11c7",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "ef88550d",
+      "needsInterop": false
+    },
+    "ng-zorro-antd/form": {
+      "src": "../../../../../../node_modules/ng-zorro-antd/fesm2022/ng-zorro-antd-form.mjs",
+      "file": "ng-zorro-antd_form.js",
+      "fileHash": "a70514b8",
+      "needsInterop": false
+    },
+    "ng-zorro-antd/grid": {
+      "src": "../../../../../../node_modules/ng-zorro-antd/fesm2022/ng-zorro-antd-grid.mjs",
+      "file": "ng-zorro-antd_grid.js",
+      "fileHash": "5ba85c63",
+      "needsInterop": false
+    },
+    "ng-zorro-antd/input": {
+      "src": "../../../../../../node_modules/ng-zorro-antd/fesm2022/ng-zorro-antd-input.mjs",
+      "file": "ng-zorro-antd_input.js",
+      "fileHash": "bc764e19",
+      "needsInterop": false
+    },
+    "ng-zorro-antd/message": {
+      "src": "../../../../../../node_modules/ng-zorro-antd/fesm2022/ng-zorro-antd-message.mjs",
+      "file": "ng-zorro-antd_message.js",
+      "fileHash": "62d74039",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-JNWKBJ6O": {
+      "file": "chunk-JNWKBJ6O.js"
+    },
+    "chunk-7KU4EY34": {
+      "file": "chunk-7KU4EY34.js"
+    },
+    "chunk-3HCEF4SX": {
+      "file": "chunk-3HCEF4SX.js"
+    },
+    "chunk-JQN7K2JY": {
+      "file": "chunk-JQN7K2JY.js"
+    },
+    "chunk-IQHOFYDM": {
+      "file": "chunk-IQHOFYDM.js"
+    },
+    "chunk-6IND4M4X": {
+      "file": "chunk-6IND4M4X.js"
+    },
+    "chunk-SWBOCD7Y": {
+      "file": "chunk-SWBOCD7Y.js"
+    },
+    "chunk-XT54HSMJ": {
+      "file": "chunk-XT54HSMJ.js"
+    },
+    "chunk-WSANMDT6": {
+      "file": "chunk-WSANMDT6.js"
+    }
+  }
+}

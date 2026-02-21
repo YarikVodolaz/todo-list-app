@@ -1,1 +1,23 @@
-<p>todo-list works!</p>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Почта</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="Введите корректный email!">
+      <input type="email" nz-input formControlName="email" placeholder="example@domain.com" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Пароль</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="Введите пароль!">
+      <input type="password" nz-input formControlName="password" placeholder="Введите пароль" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzSpan]="12" [nzOffset]="7">
+      <button nz-button nzType="primary" type="submit">Зарегистрироваться</button>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>
