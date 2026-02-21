@@ -1,10 +1,4 @@
 import {
-  NZ_FORM_SIZE,
-  NzFormItemFeedbackIconComponent,
-  NzFormNoStatusService,
-  NzFormStatusService
-} from "./chunk-3HCEF4SX.js";
-import {
   A,
   ALT,
   BACKSPACE,
@@ -13,7 +7,11 @@ import {
   MAC_META,
   META,
   NINE,
+  NZ_FORM_SIZE,
   NzConfigService,
+  NzFormItemFeedbackIconComponent,
+  NzFormNoStatusService,
+  NzFormStatusService,
   NzIconDirective,
   NzIconModule,
   NzOutletModule,
@@ -25,10 +23,11 @@ import {
   ZERO,
   _CdkPrivateStyleLoader,
   onConfigChangeEventForComponent
-} from "./chunk-JQN7K2JY.js";
+} from "./chunk-RFWDGKZA.js";
 import {
   DomSanitizer
-} from "./chunk-IQHOFYDM.js";
+} from "./chunk-4M5ERPKA.js";
+import "./chunk-W2IEX3DE.js";
 import {
   DefaultValueAccessor,
   FormBuilder,
@@ -39,7 +38,7 @@ import {
   NgControlStatus,
   ReactiveFormsModule,
   Validators
-} from "./chunk-6IND4M4X.js";
+} from "./chunk-T6UIQOAY.js";
 import {
   BreakpointObserver,
   Directionality,
@@ -59,10 +58,11 @@ import {
   toObservable,
   toSignal,
   triggerFocus
-} from "./chunk-SWBOCD7Y.js";
+} from "./chunk-WEPPDHVL.js";
 import {
   NgTemplateOutlet
-} from "./chunk-XT54HSMJ.js";
+} from "./chunk-NL7V4WGO.js";
+import "./chunk-NIWBIIBQ.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,

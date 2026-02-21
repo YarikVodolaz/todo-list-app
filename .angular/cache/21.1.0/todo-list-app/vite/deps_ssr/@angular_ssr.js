@@ -4,24 +4,28 @@ import {
   ROUTES,
   Router,
   loadChildren
-} from "./chunk-53XHWYLA.js";
+} from "./chunk-KNIP5OC6.js";
 import {
   BrowserDomAdapter,
   BrowserModule,
   EVENT_MANAGER_PLUGINS,
-  EventManagerPlugin,
+  EventManagerPlugin
+} from "./chunk-N27BI3CL.js";
+import {
   HTTP_ROOT_INTERCEPTOR_FNS
-} from "./chunk-JWKKJPFP.js";
+} from "./chunk-EKYRM6X6.js";
 import {
   APP_BASE_HREF,
   NullViewportScroller,
   PLATFORM_SERVER_ID,
+  ViewportScroller
+} from "./chunk-AGAERRO6.js";
+import {
   PlatformLocation,
-  ViewportScroller,
   XhrFactory,
   getDOM,
   setRootDomAdapter
-} from "./chunk-EDANGH62.js";
+} from "./chunk-KMK2TFKI.js";
 import {
   APP_ID,
   ApplicationRef,
