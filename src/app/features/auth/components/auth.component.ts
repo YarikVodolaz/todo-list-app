@@ -3,13 +3,12 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'todo-list',
+  selector: 'app-auth',
   standalone: false,
-  templateUrl: './todo-list.html',
-  styleUrls: ['./todo-list.scss']
+  templateUrl: 'auth.component.html',
+  styleUrl: 'auth.component.scss',
 })
-
-export class TodoListComponent implements OnInit {
+export class Auth implements OnInit {
   validateForm!: FormGroup;
 
   constructor(
@@ -39,4 +38,3 @@ submitForm(): void {
     });
   }
 }
-

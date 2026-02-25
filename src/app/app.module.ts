@@ -3,11 +3,12 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app.component';
-import { TodoListModule } from './components/todo-list/todo-list-module';
+import { TodoListModule } from './features/todo-list/todo-list-module';
+import { AuthModule } from './features/auth/auth-module';
 
 @NgModule({
   declarations: [App],
-  imports: [BrowserModule, TodoListModule, AppRoutingModule],
+  imports: [BrowserModule, TodoListModule, AuthModule, AppRoutingModule],
   providers: [
     provideClientHydration(withEventReplay())
   ],
