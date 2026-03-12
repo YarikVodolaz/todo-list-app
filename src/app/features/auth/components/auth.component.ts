@@ -18,7 +18,7 @@ export class Auth implements OnInit {
 
 submitForm(): void {
   if (this.validateForm.valid) {
-    const url = 'http://155.212.244.17:3001/auth/login';
+    const url = '/auth/login';
     const data = {
       email: this.validateForm.value.email,
       password: this.validateForm.value.password
