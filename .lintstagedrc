@@ -1,0 +1,7 @@
+{
+  "*.html": "npx htmlhint --config .htmlhintrc",
+  "*.css": ["stylelint --fix"],
+  "*.scss": ["stylelint '**/*.scss' --fix"],
+  "*.{js,ts}": "eslint --fix",
+  "*.{js,ts,css,scss,md,html}": "prettier --write"
+}
