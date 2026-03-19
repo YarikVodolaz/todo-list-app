@@ -6834,12 +6834,14 @@ var ComponentPortal = class extends Portal {
   viewContainerRef;
   injector;
   projectableNodes;
-  constructor(component, viewContainerRef, injector, projectableNodes) {
+  bindings;
+  constructor(component, viewContainerRef, injector, projectableNodes, bindings) {
     super();
     this.component = component;
     this.viewContainerRef = viewContainerRef;
     this.injector = injector;
     this.projectableNodes = projectableNodes;
+    this.bindings = bindings || null;
   }
 };
 var TemplatePortal = class extends Portal {
@@ -6952,7 +6954,8 @@ var DomPortalOutlet = class extends BasePortalOutlet {
         index: portal.viewContainerRef.length,
         injector,
         ngModuleRef,
-        projectableNodes: portal.projectableNodes || void 0
+        projectableNodes: portal.projectableNodes || void 0,
+        bindings: portal.bindings || void 0
       });
       this.setDisposeFn(() => componentRef.destroy());
     } else {
@@ -6965,7 +6968,8 @@ var DomPortalOutlet = class extends BasePortalOutlet {
       componentRef = createComponent(portal.component, {
         elementInjector,
         environmentInjector,
-        projectableNodes: portal.projectableNodes || void 0
+        projectableNodes: portal.projectableNodes || void 0,
+        bindings: portal.bindings || void 0
       });
       appRef.attachView(componentRef.hostView);
       this.setDisposeFn(() => {
@@ -7087,7 +7091,8 @@ var CdkPortalOutlet = class _CdkPortalOutlet extends BasePortalOutlet {
       index: viewContainerRef.length,
       injector: portal.injector || viewContainerRef.injector,
       projectableNodes: portal.projectableNodes || void 0,
-      ngModuleRef: this._moduleRef || void 0
+      ngModuleRef: this._moduleRef || void 0,
+      bindings: portal.bindings || void 0
     });
     if (viewContainerRef !== this._viewContainerRef) {
       this._getRootNode().appendChild(ref.hostView.rootNodes[0]);
@@ -7439,6 +7444,7 @@ var OverlayConfig = class {
   direction;
   disposeOnNavigation = false;
   usePopover;
+  eventPredicate;
   constructor(config) {
     if (config) {
       const configKeys = Object.keys(config);
@@ -7508,6 +7514,15 @@ var BaseOverlayDispatcher = class _BaseOverlayDispatcher {
       this.detach();
     }
   }
+  canReceiveEvent(overlayRef, event, stream) {
+    if (stream.observers.length < 1) {
+      return false;
+    }
+    if (overlayRef.eventPredicate) {
+      return overlayRef.eventPredicate(event);
+    }
+    return true;
+  }
   static ɵfac = function BaseOverlayDispatcher_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _BaseOverlayDispatcher)();
   };
@@ -7547,8 +7562,9 @@ var OverlayKeyboardDispatcher = class _OverlayKeyboardDispatcher extends BaseOve
   _keydownListener = (event) => {
     const overlays = this._attachedOverlays;
     for (let i2 = overlays.length - 1; i2 > -1; i2--) {
-      if (overlays[i2]._keydownEvents.observers.length > 0) {
-        this._ngZone.run(() => overlays[i2]._keydownEvents.next(event));
+      const overlayRef = overlays[i2];
+      if (this.canReceiveEvent(overlayRef, event, overlayRef._keydownEvents)) {
+        this._ngZone.run(() => overlayRef._keydownEvents.next(event));
         break;
       }
     }
@@ -7619,13 +7635,13 @@ var OverlayOutsideClickDispatcher = class _OverlayOutsideClickDispatcher extends
     const overlays = this._attachedOverlays.slice();
     for (let i2 = overlays.length - 1; i2 > -1; i2--) {
       const overlayRef = overlays[i2];
-      if (overlayRef._outsidePointerEvents.observers.length < 1 || !overlayRef.hasAttached()) {
+      const outsidePointerEvents = overlayRef._outsidePointerEvents;
+      if (!overlayRef.hasAttached() || !this.canReceiveEvent(overlayRef, event, outsidePointerEvents)) {
         continue;
       }
       if (containsPierceShadowDom(overlayRef.overlayElement, target) || containsPierceShadowDom(overlayRef.overlayElement, origin)) {
         break;
       }
-      const outsidePointerEvents = overlayRef._outsidePointerEvents;
       if (this._ngZone) {
         this._ngZone.run(() => outsidePointerEvents.next(event));
       } else {
@@ -7840,6 +7856,9 @@ var OverlayRef = class {
   }
   get hostElement() {
     return this._host;
+  }
+  get eventPredicate() {
+    return this._config?.eventPredicate || null;
   }
   attach(portal) {
     if (this._disposed) {

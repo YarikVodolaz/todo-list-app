@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TodoListComponent } from './components/todo-list.component';
-import { TodoListStore } from './services/todo-list-store';
-import { TodoListRequests } from './services/todo-list-requests';
+import { TodoListStore } from './services/todo-list-store.service';
+import { TodoListRequestsService } from './services/todo-list-requests.service';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
@@ -17,7 +17,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     NzInputModule,
     ReactiveFormsModule
   ],
-  providers: [TodoListStore, TodoListRequests],
+  providers: [TodoListStore, TodoListRequestsService],
   exports: [TodoListComponent]
 })
 

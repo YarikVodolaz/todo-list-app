@@ -23,11 +23,11 @@ import {
   ZERO,
   _CdkPrivateStyleLoader,
   onConfigChangeEventForComponent
-} from "./chunk-RFWDGKZA.js";
+} from "./chunk-QQVBLWN7.js";
 import {
   DomSanitizer
-} from "./chunk-4M5ERPKA.js";
-import "./chunk-W2IEX3DE.js";
+} from "./chunk-AZBUK2SH.js";
+import "./chunk-BQ4UNMNZ.js";
 import {
   DefaultValueAccessor,
   FormBuilder,
@@ -38,7 +38,7 @@ import {
   NgControlStatus,
   ReactiveFormsModule,
   Validators
-} from "./chunk-T6UIQOAY.js";
+} from "./chunk-KKOF2ILP.js";
 import {
   BreakpointObserver,
   Directionality,
@@ -58,11 +58,11 @@ import {
   toObservable,
   toSignal,
   triggerFocus
-} from "./chunk-WEPPDHVL.js";
+} from "./chunk-FZ574DRJ.js";
 import {
   NgTemplateOutlet
-} from "./chunk-NL7V4WGO.js";
-import "./chunk-NIWBIIBQ.js";
+} from "./chunk-WJLP2PCE.js";
+import "./chunk-Z5MQBGFR.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,
@@ -1682,19 +1682,9 @@ var TreeKeyManager = class {
   constructor(items, config) {
     if (items instanceof QueryList) {
       this._items = items.toArray();
-      items.changes.subscribe((newItems) => {
-        this._items = newItems.toArray();
-        this._typeahead?.setItems(this._items);
-        this._updateActiveItemIndex(this._items);
-        this._initializeFocus();
-      });
+      items.changes.subscribe((newItems) => this._itemsChanged(newItems.toArray()));
     } else if (isObservable(items)) {
-      items.subscribe((newItems) => {
-        this._items = newItems;
-        this._typeahead?.setItems(newItems);
-        this._updateActiveItemIndex(newItems);
-        this._initializeFocus();
-      });
+      items.subscribe((newItems) => this._itemsChanged(newItems));
     } else {
       this._items = items;
       this._initializeFocus();
@@ -1764,6 +1754,16 @@ var TreeKeyManager = class {
   }
   getActiveItem() {
     return this._activeItem;
+  }
+  _itemsChanged(newItems) {
+    if (this._hasInitialFocused && this._activeItem && !newItems.includes(this._activeItem)) {
+      this._activeItem = null;
+      this._hasInitialFocused = false;
+    }
+    this._items = newItems;
+    this._typeahead?.setItems(this._items);
+    this._updateActiveItemIndex(this._items);
+    this._initializeFocus();
   }
   _focusFirstItem() {
     this.focusItem(this._findNextAvailableItemIndex(-1));

@@ -1688,19 +1688,9 @@ var TreeKeyManager = class {
   constructor(items, config) {
     if (items instanceof QueryList) {
       this._items = items.toArray();
-      items.changes.subscribe((newItems) => {
-        this._items = newItems.toArray();
-        this._typeahead?.setItems(this._items);
-        this._updateActiveItemIndex(this._items);
-        this._initializeFocus();
-      });
+      items.changes.subscribe((newItems) => this._itemsChanged(newItems.toArray()));
     } else if ((0, import_rxjs6.isObservable)(items)) {
-      items.subscribe((newItems) => {
-        this._items = newItems;
-        this._typeahead?.setItems(newItems);
-        this._updateActiveItemIndex(newItems);
-        this._initializeFocus();
-      });
+      items.subscribe((newItems) => this._itemsChanged(newItems));
     } else {
       this._items = items;
       this._initializeFocus();
@@ -1770,6 +1760,16 @@ var TreeKeyManager = class {
   }
   getActiveItem() {
     return this._activeItem;
+  }
+  _itemsChanged(newItems) {
+    if (this._hasInitialFocused && this._activeItem && !newItems.includes(this._activeItem)) {
+      this._activeItem = null;
+      this._hasInitialFocused = false;
+    }
+    this._items = newItems;
+    this._typeahead?.setItems(this._items);
+    this._updateActiveItemIndex(this._items);
+    this._initializeFocus();
   }
   _focusFirstItem() {
     this.focusItem(this._findNextAvailableItemIndex(-1));
