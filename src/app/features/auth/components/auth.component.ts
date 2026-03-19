@@ -16,12 +16,13 @@ export class Auth implements OnInit {
     private fb: FormBuilder,
   ) {}
 
-  submitForm(): void {
-    if (this.validateForm.valid) {
-      const data = {
-        email: this.validateForm.value.email,
-        password: this.validateForm.value.password
-      };
+submitForm(): void {
+  if (this.validateForm.valid) {
+    const url = '/auth/login';
+    const data = {
+      email: this.validateForm.value.email,
+      password: this.validateForm.value.password
+    };
 
       this.authApiService.login(data).subscribe({
         next: (response) => console.log('Успех:', response),
