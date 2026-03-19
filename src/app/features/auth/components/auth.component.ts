@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms'; 
-import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { AuthApiService } from '../services/auth-request.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,29 +12,28 @@ export class Auth implements OnInit {
   validateForm!: FormGroup;
 
   constructor(
-  private http: HttpClient, 
-  private fb: FormBuilder,
-) {} 
+    private authApiService: AuthApiService,
+    private fb: FormBuilder,
+  ) {}
 
-submitForm(): void {
-  if (this.validateForm.valid) {
-    const url = 'http://155.212.244.17:3001/auth/login';
-    const data = {
-      email: this.validateForm.value.email,
-      password: this.validateForm.value.password
-    };
+  submitForm(): void {
+    if (this.validateForm.valid) {
+      const data = {
+        email: this.validateForm.value.email,
+        password: this.validateForm.value.password
+      };
 
-    this.http.post(url, data).subscribe({
-      next: (response) => console.log('Успех:', response),
-      error: (error) => console.error('Ошибка:', error)
-    });
+      this.authApiService.login(data).subscribe({
+        next: (response) => console.log('Успех:', response),
+        error: (error) => console.error('Ошибка:', error)
+      });
+    }
   }
-}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [ Validators.required]]
+      password: ['', [Validators.required]]
     });
   }
 }
